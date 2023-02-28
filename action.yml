@@ -30,6 +30,10 @@ inputs:
     description: 'Enable cache to speed up documentation building'
     required: false
     default: false
+  SSK_KEY:
+    description: 'Passed to actions/checkout to enable private repos"
+    required: false
+    default: ''
 outputs:
   page_url:
     description: 'URL to deployed GitHub Pages'
@@ -43,10 +47,12 @@ runs:
       if: ${{ inputs.cache == 'true' }}
       with:
         fetch-depth: 0 # Required by git-restore-mtime
+        SSH_KEY: ${{ inputs.SSH_KEY }}
     - name: Checkout
       uses: actions/checkout@v3
       if: ${{ inputs.cache == 'false' }}
-
+      with:
+        SSH_KEY: ${{ inputs.SSH_KEY }}
     - name: Setup python
       uses: actions/setup-python@v4
       if: ${{ inputs.cache == 'true' }}
