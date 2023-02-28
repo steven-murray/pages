@@ -31,7 +31,7 @@ inputs:
     required: false
     default: false
   SSK_KEY:
-    description: 'Passed to actions/checkout to enable private repos"
+    description: 'Passed to actions/checkout to enable private repos'
     required: false
     default: ''
 outputs:
