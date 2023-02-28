@@ -52,7 +52,7 @@ runs:
       uses: actions/checkout@v3
       if: ${{ inputs.cache == 'false' }}
       with:
-        SSH_KEY: ${{ inputs.SSH_KEY }}
+        ssh-key: ${{ inputs.ssh_key }}
     - name: Setup python
       uses: actions/setup-python@v4
       if: ${{ inputs.cache == 'true' }}
